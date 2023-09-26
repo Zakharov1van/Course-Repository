@@ -6,8 +6,8 @@ except ValueError:
     quit()
 
 operation = input("Type '+' for adding, '-' for subtracting, '*' for multiplying or '/' for dividing: ")
-
-if operation != "+" and operation != "-" and operation != "*" and operation != "/":
+expected_operations = ['+', '-', '*', '/']
+if operation in expected_operations:
     print("You chose wrong operation")
 else:
     if operation == "+":
