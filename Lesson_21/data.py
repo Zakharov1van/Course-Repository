@@ -10,7 +10,18 @@ link_list = ['https://mail.google.com/mail/&ogbl', 'https://www.google.com.ua/im
              'https://www.google.com.ua/advanced_search?hl=uk&fg=1',
              'https://www.google.com.ua/history/privacyadvisor/search/unauth?utm_source=googlemenu&fg=1&cctld=com.ua',
              'https://www.google.com.ua/history/optout?hl=uk&fg=1',
-             'https://support.google.com/websearch/?p=ws_results_help&hl=uk&fg=1']
+             'https://support.google.com/websearch/?p=ws_results_help&hl=uk&fg=1', 'https://myaccount.google.com/?utm_source=OGB&utm_medium=app',
+             'https://www.google.com/', 'https://maps.google.com/', 'https://www.youtube.com/', 'https://play.google.com/',
+             'https://news.google.com/', 'https://mail.google.com/mail/', 'https://meet.google.com/?hs=197', 'https://chat.google.com/',
+             'https://contacts.google.com/', 'https://drive.google.com/', 'https://calendar.google.com/calendar',
+             'https://translate.google.com/', 'https://photos.google.com/', 'https://www.google.com/shopping?source=og',
+             'https://www.google.com/finance', 'https://docs.google.com/document/?usp=docs_alc',
+             'https://docs.google.com/spreadsheets/?usp=sheets_alc', 'https://docs.google.com/presentation/?usp=slides_alc',
+             'https://books.google.com/', 'https://www.blogger.com/', 'https://keep.google.com/', 'https://jamboard.google.com/',
+             'https://earth.google.com/web/', 'https://www.google.com/save', 'https://artsandculture.google.com/?utm_source=ogs.google.com&utm_medium=referral',
+             'https://ads.google.com/home/?subid=ww-ww-xs-ip-awhc-a-ogb_cons!o2', 'https://www.google.com/travel/?dest_src=al',
+             'https://docs.google.com/forms/', 'https://chrome.google.com/webstore?utm_source=app-launcher', 'https://about.google/products/']
+
 
 
 title_list = ['Gmail', 'Зображення Google', 'Все продукты и сервисы Google - Google', 'Вхід – облікові записи Google',
@@ -19,4 +30,17 @@ title_list = ['Gmail', 'Зображення Google', 'Все продукты �
               'Google Поиск – Как работает Google Поиск', 'Політика конфіденційності – Конфіденційність і умови – Google',
               'Загальні положення та умови Google – Конфіденційність і умови – Google', 'Налаштування пошуку',
               'Розширений пошук Google', 'Ваши данные в Поиске', 'Google\xa0– налаштування пошуку',
-              'Пошук Google Довідка', 'Google']
+              'Пошук Google Довідка', 'Google Аккаунт', 'Google', 'Google Карты', 'YouTube', 'Приложения в Google Play',
+              'Google Новости', 'Электронная почта Gmail: надежно, конфиденциально, бесплатно | Google Workspace',
+              'Google Meet: онлайн-звонки и видеоконференции | Google Workspace', 'Google Chat: обмен сообщениями и работа в команде | Google Workspace',
+              'Вход\xa0– Google Аккаунты', 'Личное облачное хранилище и платформа для обмена файлами – Google',
+              'Общий доступ к Календарю и планирование встреч – Google Календарь', 'Google Переводчик', 'Google Photos',
+              'Google Покупки\xa0– онлайн-шопинг, сравнение цен, поиск магазинов',
+              'Сервис "Google Финансы": курсы ценных бумаг, деловые новости и данные о котировках в режиме реального времени',
+              'Google Документы: вход в систему', 'Google Таблицы: вход в систему', 'Google Презентации: вход в систему',
+              'Google Книги', 'Blogger.com\xa0– Чтобы создать свой собственный блог, потребуется лишь несколько минут.',
+              'Вход\xa0– Google Аккаунты', 'Вход\xa0– Google Аккаунты', '', 'Интересы', 'Google Искусство и культура',
+              'Google Ads – Залучайте клієнтів і продавайте більше за допомогою онлайн-реклами', 'Google',
+              'Google Формы: вход в систему', 'Интернет-магазин Chrome', 'Все продукты и сервисы Google - Google', 'Google']
+
+

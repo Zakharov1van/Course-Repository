@@ -37,6 +37,18 @@ class MySelenium:
                 link_lst.append(link)
         return link_lst
 
+    def search_iframe_links(self):
+        links = []
+        wait = WebDriverWait(self.driver, 20)
+        dropdown = self.driver.find_element(By.XPATH, "//a[@class='gb_d']")
+        dropdown.click()
+        wait.until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@name='app']")))
+        iframe_items = self.driver.find_elements(By.XPATH, "//a[@href]")
+        for item in iframe_items:
+            link = item.get_attribute("href")
+            links.append(link)
+        return links
+
     def clicker_and_title_checker(self, links):
         titles = []
         for link in links:
