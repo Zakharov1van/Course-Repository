@@ -32,5 +32,6 @@ def test_click(base_url, tag):
     page = MySelenium()
     page.get_page(base_url)
     found_links = page.search_links_by_tag(tag)
+    found_links.append(page.get_current_url())
     page_titles = page.clicker_and_title_checker(found_links)
     assert page_titles == title_list
