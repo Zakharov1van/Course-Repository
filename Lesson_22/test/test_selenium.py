@@ -85,11 +85,24 @@ def test_expanded_comments(base_url):
 
 @pytest.mark.parametrize("base_url, button_xpath", [("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'FollowButtonLegacy-legacyButton-mPH Project-captionFollow-fY4']"),
                                                     ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'IconMessageButton-regularMessageText-PEu']"),
-                                                    ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'Tooltip-wrapper-Uzv Project-tooltip-PUI Project-collection-y5x']")])
+                                                    ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'Tooltip-wrapper-Uzv Project-tooltip-PUI Project-collection-y5x']"),
+                                                    ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//button[@class='Btn-button-CqT Btn-tertiary-Z8Q Btn-normal-If5 js-adobeid-signin e2e-PrimaryNav-Signin']"),
+                                                     ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//button[@class='Btn-button-CqT Btn-primary-wt8 Btn-normal-If5 js-adobeid-signup e2e-PrimaryNav-signup']")])
 def test_first_screen_buttons(base_url, button_xpath):
     page = MySelenium()
     page.get_page(base_url)
     page.click_on_button(button_xpath)
+    time.sleep(3)
+    assert "https://auth.services.adobe.com" in page.get_current_url()
+    page.close_browser()
+
+@pytest.mark.parametrize("base_url, xpath", [("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'FollowButtonLegacy-legacyButton-mPH']"),
+                                             ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'Btn-labelWrapper-_Re MessageButton-buttonLabel-j2x undefined']")])
+def test_follow_and_massage_buttons(base_url, xpath):
+    page = MySelenium()
+    page.get_page(base_url)
+    page.scroll_to_element("//div[@class = 'ProjectComments-seeMore-QA7']")
+    page.click_on_button(xpath)
     time.sleep(3)
     assert "https://auth.services.adobe.com" in page.get_current_url()
     page.close_browser()
