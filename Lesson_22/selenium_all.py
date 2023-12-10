@@ -112,3 +112,30 @@ class MySelenium:
         button = wait.until(EC.element_to_be_clickable((By.XPATH, button_xpath)))
         button.click()
 
+    def get_text_iframe(self, xpath):
+        wait = WebDriverWait(self.driver, 20)
+        wait.until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@title='Оформление заказа Adobe']")))
+        text = wait.until(EC.presence_of_element_located((By.XPATH, xpath))).text
+        return text
+
+    def get_page_title(self):
+        return self.driver.title
+
+    def get_text_from_selector(self, xpath, items_xpath):
+        wait = WebDriverWait(self.driver, 20)
+        func_list = []
+        selector = wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
+        actions = ActionChains(self.driver)
+        actions.move_to_element(selector).perform()
+        time.sleep(3)
+        selector_items = self.driver.find_elements(By.XPATH, items_xpath)
+        for item in selector_items:
+            text = item.text
+            func_list.append(text)
+        return func_list
+
+    def open_selector(self, xpath):
+        wait = WebDriverWait(self.driver, 20)
+        selector = wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
+        actions = ActionChains(self.driver)
+        actions.move_to_element(selector).perform()

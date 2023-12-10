@@ -9,6 +9,7 @@ from .. data import adobe_links
 from .. data import header_links
 from .. data import follow_links
 from .. data import footer_links
+from .. data import lang_list
 
 
 @pytest.mark.parametrize("base_url", ["https://www.behance.net/gallery/18988225/B-Yoga-Website"])
@@ -83,6 +84,7 @@ def test_expanded_comments(base_url):
     assert number_of_comments == 20
     page.close_browser()
 
+
 @pytest.mark.parametrize("base_url, button_xpath", [("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'FollowButtonLegacy-legacyButton-mPH Project-captionFollow-fY4']"),
                                                     ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'IconMessageButton-regularMessageText-PEu']"),
                                                     ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'Tooltip-wrapper-Uzv Project-tooltip-PUI Project-collection-y5x']"),
@@ -96,6 +98,7 @@ def test_first_screen_buttons(base_url, button_xpath):
     assert "https://auth.services.adobe.com" in page.get_current_url()
     page.close_browser()
 
+
 @pytest.mark.parametrize("base_url, xpath", [("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'FollowButtonLegacy-legacyButton-mPH']"),
                                              ("https://www.behance.net/gallery/18988225/B-Yoga-Website", "//div[@class = 'Btn-labelWrapper-_Re MessageButton-buttonLabel-j2x undefined']")])
 def test_follow_and_massage_buttons(base_url, xpath):
@@ -105,4 +108,35 @@ def test_follow_and_massage_buttons(base_url, xpath):
     page.click_on_button(xpath)
     time.sleep(3)
     assert "https://auth.services.adobe.com" in page.get_current_url()
+    page.close_browser()
+
+
+@pytest.mark.parametrize("base_url", ["https://www.behance.net/gallery/18988225/B-Yoga-Website"])
+def test_transaction_window(base_url):
+    page = MySelenium()
+    page.get_page(base_url)
+    page.click_on_button("//button[@class = 'Btn-button-CqT Btn-base-L7P Btn-normal-If5 PrimaryNav-freeTrialButton-TwI e2e-Nav-free-trial']")
+    text = page.get_text_iframe("//div[@class = 'appError__fatalErrorTitle___SWAW8']")
+    assert text == "К сожалению, не удалось выполнить вашу транзакцию"
+    page.close_browser()
+
+
+@pytest.mark.parametrize("base_url", ["https://www.behance.net/gallery/18988225/B-Yoga-Website"])
+def test_lang_menu(base_url):
+    page = MySelenium()
+    page.get_page(base_url)
+    page.scroll_to_element("//div[@class = 'StaticFooter-bottomFooter-Z_1']")
+    found_list = page.get_text_from_selector("//button[@class='StaticFooter-resetButton-lt7 StaticFooter-footerLanguageSelector-lED']", "//li[contains(@class, 'LanguageSelector-footerSelectorItem-m2u')]")
+    assert found_list == lang_list
+    page.close_browser()
+
+
+@pytest.mark.parametrize("base_url", ["https://www.behance.net/gallery/18988225/B-Yoga-Website"])
+def test_change_language(base_url):
+    page = MySelenium()
+    page.get_page(base_url)
+    page.scroll_to_element("//div[@class = 'StaticFooter-bottomFooter-Z_1']")
+    page.open_selector("//button[@class='StaticFooter-resetButton-lt7 StaticFooter-footerLanguageSelector-lED']")
+    page.click_on_button("//button[@class = 'LanguageSelector-resetButton-qrR LanguageSelector-footerSelectorLinks-h87 e2e-LanguageSelector-sv_SE']")
+    assert page.get_page_title() == "B Yoga Website på Behance"
     page.close_browser()
